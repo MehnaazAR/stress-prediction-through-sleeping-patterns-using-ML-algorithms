@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Prediction Result</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+            text-align: center;
+        }
+        h1 {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-size: 70px;
+            margin-bottom: 30px;
+        }
+        .result {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            margin-top: 20px;
+        }
+        .stress-image {
+            width: 200px;
+            height: auto;
+        }
+        .suggestion {
+            font-size: 30px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stress Prediction Result</h1>
+        <div class="result">
+            <p>Your predicted stress level is: {{ stress_level }}</p>
+        </div>
+        <div class="image-container">
+            {% if stress_level == 0 %}
+            <img src="{{ url_for('static', filename='level0.png') }}" alt="Stress Level 0" class="stress-image">
+            {% elif stress_level == 1 %}
+            <img src="{{ url_for('static', filename='level1.png') }}" alt="Stress Level 1" class="stress-image">
+            {% elif stress_level == 2 %}
+            <img src="{{ url_for('static', filename='level2.png') }}" alt="Stress Level 2" class="stress-image">
+            {% elif stress_level == 3 %}
+            <img src="{{ url_for('static', filename='level3.png') }}" alt="Stress Level 3" class="stress-image">
+            {% elif stress_level == 4 %}
+            <img src="{{ url_for('static', filename='level4.png') }}" alt="Stress Level 4" class="stress-image">
+            {% endif %}
+        </div>
+        <div class="suggestion">
+            <p><strong>Suggestions for better sleep and health:</strong></p>
+            {% if stress_level == 0 %}
+                <p>Your stress level is predicted to be low. It's important to maintain a consistent sleep schedule, create a relaxing bedtime routine, and practice stress-reduction techniques such as deep breathing and meditation.</p>
+            {% elif stress_level == 1 %}
+                <p>Your stress level is predicted to be moderate. Consider reducing caffeine and screen time before bed, optimizing your sleep environment, and incorporating relaxation exercises into your nightly routine.</p>
+            {% elif stress_level == 2 %}
+                <p>Your stress level is predicted to be moderate. Consider reducing caffeine and screen time before bed, optimizing your sleep environment, and incorporating relaxation exercises into your nightly routine.</p>
+            {% elif stress_level == 3 %}
+                <p>Your stress level is predicted to be high. Prioritize sleep hygiene by avoiding stimulants and electronic devices before bed, creating a comfortable sleep environment, and practicing relaxation techniques to unwind.</p>
+            {% elif stress_level == 4 %}
+                <p>Your stress level is predicted to be high. Prioritize sleep hygiene by avoiding stimulants and electronic devices before bed, creating a comfortable sleep environment, and practicing relaxation techniques to unwind.</p>
+            {% endif %}
+        </div>
+        <a href="/" class="btn btn-primary">Back to Home</a>
+    </div>
+</body>
+</html>
